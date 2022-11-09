@@ -5,18 +5,21 @@ window.addEventListener('load', () => {
 });
 
 function updateSubtotal(product) {
-  const price = document.querySelector('.price span').innerHTML;
-  const quantity = document.querySelector('.quantity input').value;
+  const price = product.querySelector('.price span').innerHTML;
+  const quantity = product.querySelector('.quantity input').value;
 
   const subtotalPrice = price * quantity
 
-  const subtotalSpan = document.querySelector('.subtotal span');
+  const subtotalSpan = product.querySelector('.subtotal span');
   return subtotalSpan.innerHTML = subtotalPrice.toFixed(2)
 }
 
 function calculateAll() {
   // ITERATION 2
-  
+  const products = [...document.getElementsByClassName("product")]
+  products.forEach((product) => {
+    updateSubtotal(product)
+  });
 
   // ITERATION 3
   //... your code goes here
