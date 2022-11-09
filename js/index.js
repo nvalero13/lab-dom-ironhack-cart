@@ -2,6 +2,9 @@
 window.addEventListener('load', () => {
   const calculatePricesBtn = document.getElementById('calculate');
   calculatePricesBtn.addEventListener('click', calculateAll);
+
+  const removeProductBtns = [...document.getElementsByClassName('btn-remove')]
+  removeProductBtns.forEach((btn) => btn.addEventListener('click', removeProduct))
 });
 
 function updateSubtotal(product) {
@@ -31,8 +34,12 @@ function calculateAll() {
 
 function removeProduct(event) {
   const target = event.currentTarget;
-  console.log('The target in remove is:', target);
-  //... your code goes here
+  const product = target.parentNode.parentNode
+  const result = product.parentNode.removeChild(product)
+  calculateAll()
+  return result
+  
+
 }
 
 // ITERATION 5
